@@ -16,12 +16,49 @@
 // 3.  Input: nums = [1, 2, 3], k = 3 Output: 6 Explanation: The subarray [1, 2, 3] has the maximum sum = 1 + 2 + 3 = 6. -->
 
 
-let intNum=[1,2,13,4,25,6,10,12,30,40]
-let subArray=intNum.slice(1,5)
-console.log(subArray)
-k=4
-const sum=subArray.reduce((acc,curr)=>{
-    return acc+curr
-},0)
+function maxSum(arr,k){
+  const subArrays=[]
 
-console.log(sum)
+  if(!Array.isArray(arr) || arr.length >10**5 ||arr.length<1){
+    console.log("The length of the array must be <=10**5")
+    return
+  }
+
+ for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] !== 'number' || arr[i] < 1 || arr[i]>10**5) {
+      console.log("every index must be a postive integer not greater than 10**5")
+      return
+    }
+    
+ }
+
+  if (typeof k !== 'number' || k> arr.length || k<1 ||  k > 10 ** 4 ){
+    console.log("K must be a positive integer and not more than 10**4")
+    return
+  }
+
+  for (let i=0; i<arr.length; i=i+k) {
+    subArrays.push(arr.slice(i,i+k))
+    
+  }
+
+  
+    let maxNum=0
+   subArrays.forEach((singleArayy)=>{
+    // console.log(singleArayy)
+    const arraySum= singleArayy.reduce((a,b)=>a + b,0)
+
+     if(arraySum>maxNum){
+        maxNum=arraySum
+
+       }
+  })
+
+  
+    return maxNum
+
+}
+
+console.log(maxSum([40,2,3,2,4,60],2))
+
+
