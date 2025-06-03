@@ -44,13 +44,10 @@ function maxSum(arr,k){
 
   
     let maxNum=0
-   subArrays.forEach((singleArayy)=>{
-    // console.log(singleArayy)
+    subArrays.forEach((singleArayy)=>{
     const arraySum= singleArayy.reduce((a,b)=>a + b,0)
-
-     if(arraySum>maxNum){
+    if(arraySum>maxNum){
         maxNum=arraySum
-
        }
   })
 
