@@ -47,7 +47,6 @@ function maxSum(arr,k){
   // I will have [40,2],then as it iterates over, the next will be [3,2] etc
   // I push the subarrays into the variable called subArrays to form the nested array
   for (let i=0; i<arr.length; i=i+k) {
-    console.log(k)
     subArrays.push(arr.slice(i,i+k))
    
   }
