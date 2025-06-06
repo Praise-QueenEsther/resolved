@@ -22,23 +22,24 @@ function maxSum(arr,k){
   }
 
   
-  // This part gives the contiguous subarrays which I pushed them into a variable called subArrays which was initailly an empty array
-  // This "for loop",loops over the entire array starting from 0 and increament by the iterated number rather than 1.
-  // initially i=0, assuming k=2 at initial, 0+2=2, it will iterate over, i=4, and etc till the iteration stops
- // arr.slice(i,i+k) created the subarrays. if i=0 at initail, and k=2, assuming arr= [40,2,3,2,4,60] 
-  // I will have [40,2],then as it iterates over, the next will be [3,2] etc
-  // I push the subarrays into the variable called subArrays to form the nested array
-  for (let i=0; i<arr.length; i=i+k) {
-    subArrays.push(arr.slice(i,i+k))
    
+  // This part gives the contiguous subarrays which I pushed them into a variable called subArrays which was initailly an empty array
+  // This "for loop",loops over the entire array starting from 0 and increament by 1.
+  // initially i=0, assuming k=2 at initial, 
+ // i<=arr.length-k: the last valid index of the array to start from base on size k to avoid exceeding the end array
+ //  arr.slice(i,i+k): creates the subarrays of size k
+  // I pushed the subarrays into the variable called subArrays to form the nested array
+  for (let i=0; i<=arr.length-k; i++) {
+    subArrays.push(arr.slice(i,i+k))
   }
 
 
-  // This gives the maximum sum of any of the contiguous subarray of size k
+   // This gives the maximum sum of any of the contiguous subarray of size k
   // The forEach function iterates over the array and brings out the nested arrays
-    // i.e [[40,2],[3,2],[4,60]]=
+    // i.e [[40,2],[2,3],[3,4],[4,60]]=
     // [40,2]
-    //  [3,2]
+    //  [2,3]
+    // [3,4]
     // [4,60]
 
     // The reduce function adds up the element of each array 
