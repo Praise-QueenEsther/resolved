@@ -1,21 +1,3 @@
-
-//   <!-- Solve this : Problem Description:
-// Given an array of positive integers and a positive integer k, find the maximum sum of any contiguous subarray of size k.
-// Input:
-// •  An array nums of positive integers.
-// •  An integer k representing the size of the subarray.
-// Output:
-// •  An integer representing the maximum sum of any contiguous subarray of size k.
-// Constraints:
-// •  1 <= k <= nums.length <= 10^5
-// •  1 <= nums[i] <= 10^4
-// •  All numbers are positive integers.
-// Examples:
-// 1.  Input: nums = [1, 4, 2, 10, 2, 3, 1, 0, 20], k = 4Output: 24Explanation: The subarray [4, 2, 10, 2] has the maximum sum = 4 + 2 + 10 + 2 = 24.
-// 2.  Input: nums = [5, 5, 5], k = 2 Output: 10 Explanation: The subarray [5, 5] has the maximum sum = 5 + 5 = 10.
-// 3.  Input: nums = [1, 2, 3], k = 3 Output: 6 Explanation: The subarray [1, 2, 3] has the maximum sum = 1 + 2 + 3 = 6. -->
-
-
 function maxSum(arr,k){
   //  I initialized subArrays as empty array to form a nested array with singleArrays
   const subArrays=[]
@@ -75,7 +57,16 @@ function maxSum(arr,k){
 
 }
 
-const result=maxSum([40,2,3,2,4,60],2)
-console.log(result)
+const inputAnyArray = process.argv[2];
+const inputK = parseInt(process.argv[3]);
 
+const arr= inputAnyArray.split(",")
+const finalArr=arr.map((ar)=>Number(ar))
 
+if(finalArr.some(isNaN) ||isNaN(inputK) ){
+    console.log("all input must be numbers")
+    process.exit(1)
+}
+
+const result = maxSum(finalArr,inputK )
+console.log(`The Maximum sum of subarray of size ${inputK} is: ${result}`)
